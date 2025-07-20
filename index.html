@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Para alguien especial 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-gradient: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #8b5a9e 100%);
+      --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.15);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.9);
+      --accent-pink: #ff6b9d;
+      --accent-purple: #8b5a9e;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      background-attachment: fixed;
+      color: var(--text-primary);
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Animación de estrellas de fondo */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      animation: twinkle 3s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* Portada cinematográfica */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(45deg, 
+        rgba(139, 90, 158, 0.9) 0%, 
+        rgba(196, 69, 105, 0.8) 25%,
+        rgba(255, 107, 157, 0.9) 50%,
+        rgba(196, 69, 105, 0.8) 75%,
+        rgba(139, 90, 158, 0.9) 100%);
+      background-size: 400% 400%;
+      animation: gradientWave 12s ease infinite;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes gradientWave {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none"><path d="M20 50c0-16.569 13.431-30 30-30s30 13.431 30 30-13.431 30-30 30-30-13.431-30-30z" fill="rgba(255,255,255,0.03)"/></svg>');
+      animation: floatPattern 25s linear infinite;
+      opacity: 0.1;
+    }
+
+    @keyframes floatPattern {
+      0% { transform: translateY(100vh) rotate(0deg); }
+      100% { transform: translateY(-100px) rotate(360deg); }
+    }
+
+    .hero-content {
+      max-width: 800px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      background: linear-gradient(45deg, #ffffff, #ffb6c1, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(255, 182, 193, 0.5);
+      animation: textGlow 4s ease-in-out infinite alternate;
+      line-height: 1.2;
+    }
+
+    @keyframes textGlow {
+      from { 
+        filter: drop-shadow(0 0 10px rgba(255, 182, 193, 0.3));
+      }
+      to { 
+        filter: drop-shadow(0 0 20px rgba(255, 182, 193, 0.6));
+      }
+    }
+
+    .hero p {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .hero-button {
+      background: linear-gradient(45deg, #ffffff, #f8f9ff);
+      color: #8b5a9e;
+      padding: 1.2rem 3rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 
+        0 10px 30px rgba(0,0,0,0.2),
+        0 0 0 0 rgba(255, 182, 193, 0.4);
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .hero-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .hero-button:hover::before {
+      left: 100%;
+    }
+
+    .hero-button:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 
+        0 20px 40px rgba(0,0,0,0.3),
+        0 0 20px rgba(255, 182, 193, 0.6);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 0 0 rgba(255, 182, 193, 0.6); }
+      50% { box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 0 10px rgba(255, 182, 193, 0); }
+      100% { box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 0 0 rgba(255, 182, 193, 0); }
+    }
+
+    /* Contenido principal */
+    .main-content {
+      display: none;
+      min-height: 100vh;
+      padding: 4rem 2rem;
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+      from { 
+        opacity: 0; 
+        transform: translateY(50px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section {
+      margin-bottom: 5rem;
+    }
+
+    .section-title {
+      font-family: 'Crimson Text', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--primary-gradient);
+      border-radius: 2px;
+    }
+
+    /* Tarjetas cinematográficas */
+    .movies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .movie-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      padding: 2rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .movie-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--primary-gradient);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    .movie-card:hover::before {
+      opacity: 0.1;
+    }
+
+    .movie-card:hover {
+      transform: translateY(-15px) rotateX(5deg);
+      box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 107, 157, 0.3);
+      border-color: var(--accent-pink);
+    }
+
+    .movie-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--accent-pink);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .movie-description {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    /* Sección de secretos premium */
+    .secrets-section {
+      background: var(--glass-bg);
+      backdrop-filter: blur(30px);
+      border-radius: 30px;
+      border: 1px solid var(--glass-border);
+      padding: 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .secrets-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(transparent, rgba(255, 107, 157, 0.1), transparent 30%);
+      animation: rotate 10s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .secrets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .secret-item {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .secret-item:hover {
+      transform: scale(1.02);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .secret-button {
+      background: var(--primary-gradient);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 30px rgba(196, 69, 105, 0.3);
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .secret-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .secret-button:hover::before {
+      left: 100%;
+    }
+
+    .secret-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(196, 69, 105, 0.4);
+    }
+
+    .secret-message {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: linear-gradient(45deg, 
+        rgba(255, 107, 157, 0.2), 
+        rgba(196, 69, 105, 0.2));
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 107, 157, 0.3);
+      backdrop-filter: blur(10px);
+      display: none;
+      animation: messageReveal 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes messageReveal {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .secret-message.visible {
+      display: block;
+    }
+
+    /* Efectos especiales */
+    .floating-element {
+      position: absolute;
+      color: rgba(255, 182, 193, 0.4);
+      font-size: 1.5rem;
+      animation: floatUp 4s infinite ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-150px) rotate(360deg) scale(1.2);
+      }
+    }
+
+    .sparkle-effect {
+      position: absolute;
+      color: #ffd700;
+      font-size: 1.2rem;
+      animation: sparkle 2s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { 
+        opacity: 0; 
+        transform: scale(0) rotate(0deg); 
+      }
+      50% { 
+        opacity: 1; 
+        transform: scale(1) rotate(180deg); 
+      }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .movies-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .secrets-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero {
+        padding: 1rem;
+      }
+      
+      .main-content {
+        padding: 2rem 1rem;
+      }
+      
+      .secrets-section {
+        padding: 2rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .movie-card {
+        padding: 1.5rem;
+      }
+      
+      .secret-item {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Cursor trail effect */
+    .cursor-trail {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background: radial-gradient(circle, var(--accent-pink), transparent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.8;
+      animation: fade 0.5s ease-out forwards;
+    }
+
+    @keyframes fade {
+      to {
+        opacity: 0;
+        transform: scale(2);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Fondo de estrellas -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Portada Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>💖 Hola tú, ojitos hermosos de miel...</h1>
+      <p>Esta no es una página común, es una experiencia digital creada especialmente para ti.<br>
+      Porque desde que te conocí, todo se volvió más bonito y me inspiras a crear cosas hermosas.</p>
+      <button class="hero-button" onclick="startExperience()">
+        Comenzar esta experiencia ✨
+      </button>
+    </div>
+  </section>
+
+  <!-- Contenido Principal -->
+  <main class="main-content" id="mainContent">
+    <div class="container">
+      <!-- Sección de películas -->
+      <section class="section">
+        <h2 class="section-title">🎬 Un rincón cinematográfico hecho pensando en ti</h2>
+        
+        <div class="movies-grid">
+          <div class="movie-card">
+            <h3 class="movie-title">🧁 La chica que hornea dulzura</h3>
+            <p class="movie-description">
+              Y no solo en la pastelería… también en cada palabra que dice, en cada sonrisa que se le escapa, 
+              en cada gesto que hace que el mundo se sienta más dulce.
+            </p>
+          </div>
+
+          <div class="movie-card">
+            <h3 class="movie-title">🍯 Esos ojitos de miel</h3>
+            <p class="movie-description">
+              Hay algo mágico en su mirada que calma tormentas, que atrapa corazones y que se queda 
+              dando vueltas en mi mente desde el primer día que la conocí.
+            </p>
+          </div>
+
+          <div class="movie-card">
+            <h3 class="movie-title">🌞 La ternura que cambió mis días</h3>
+            <p class="movie-description">
+              Sin avisar, apareció en mi vida como un rayo de sol. Y ahora todo tiene un toque más bonito, 
+              más esperanzador desde que forma parte de mi historia.
+            </p>
+          </div>
+
+          <div class="movie-card">
+            <h3 class="movie-title">💫 Todavía no lo sabe, pero me encanta</h3>
+            <p class="movie-description">
+              Me encanta cómo habla, cómo ve la vida, cómo hace que hasta lo más sencillo se sienta especial. 
+              Cada conversación contigo es un regalo que atesoro.
+            </p>
+          </div>
+
+          <div class="movie-card">
+            <h3 class="movie-title">🎞️ Capítulo 1: Ella y sus ojitos de miel</h3>
+            <p class="movie-description">
+              Esto apenas empieza, pero si depende de mí… quiero seguir escribiendo esta hermosa historia 
+              contigo, creando recuerdos que duren para siempre.
+            </p>
+          </div>
+
+          <div class="movie-card">
+            <h3 class="movie-title">🌹 La protagonista perfecta</h3>
+            <p class="movie-description">
+              De todas las historias que podría imaginar, tú eres la protagonista de la más bonita. 
+              La que tiene el poder de hacer que cada día valga la pena.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección de secretos -->
+      <section class="section">
+        <div class="secrets-section">
+          <h2 class="section-title">🌈 Secretos guardados especialmente para ti</h2>
+          
+         <div class="secrets-grid">
+  <div class="secret-item">
+    <button class="secret-button" onclick="revealSecret('secret1')">
+      💌 Primer Secreto
+    </button>
+    <div id="secret1" class="secret-message">
+      Tu hermosa sonrisa… no sabes cuánto me fascina. Y tu voz… la admiro totalmente, como no tienes idea. ✨
+    </div>
+  </div>
+
+  <div class="secret-item">
+    <button class="secret-button" onclick="revealSecret('secret2')">
+      💌 Segundo Secreto
+    </button>
+    <div id="secret2" class="secret-message">
+      A veces imagino cosas, y sinceramente pienso que quizás te molestan mis mensajes...  
+      pero créeme que no es mi intención. 🥺
+    </div>
+  </div>
+
+  <div class="secret-item">
+    <button class="secret-button" onclick="revealSecret('secret3')">
+      💌 Tercer Secreto
+    </button>
+    <div id="secret3" class="secret-message">
+      Tal vez aún no lo sabes, pero cada día que pasa me fascina cómo eres completamente.  
+      Esa bella personalidad que tienes... ojalá nunca la cambies. 🌷
+    </div>
+  </div>
+
+  <div class="secret-item">
+    <button class="secret-button" onclick="revealSecret('secret4')">
+      💌 Secreto Especial
+    </button>
+    <div id="secret4" class="secret-message">
+      Creé esta página pensando en ti, en cómo eres tú totalmente.  
+      Y cada día que pasa, me inspiras a hacer algo especial solo para ti...  
+      La verdad, sí me gustaría salir contigo, tener un día bonito juntos  
+      y ojalá podamos agendar una cita para vernos. 💖
+    </div>
+  </div>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Variables globales
+    let mouseX = 0, mouseY = 0;
+    let cursorTrails = [];
+
+    // Función principal de inicio
+    function startExperience() {
+      document.getElementById("hero").style.opacity = "0";
+      document.getElementById("hero").style.transition = "opacity 1s ease";
+      
+      setTimeout(() => {
+        document.getElementById("hero").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+        createFloatingElements();
+      }, 1000);
+    }
+
+    // Revelar secretos con efectos especiales
+    function revealSecret(secretId) {
+      const secret = document.getElementById(secretId);
+      const button = secret.previousElementSibling;
+      
+      if (secret.classList.contains("visible")) {
+        secret.classList.remove("visible");
+        button.textContent = button.textContent.replace("Ocultar", "");
+      } else {
+        secret.classList.add("visible");
+        button.textContent = "Ocultar " + button.textContent;
+        createFloatingHearts(secret.parentElement);
+        createSparkleEffect(secret.parentElement);
+      }
+    }
+
+    // Crear estrellas de fondo
+    function createStars() {
+      const starsContainer = document.getElementById('stars');
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.width = Math.random() * 3 + 1 + 'px';
+        star.style.height = star.style.width;
+        star.style.animationDelay = Math.random() * 3 + 's';
+        star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        starsContainer.appendChild(star);
+      }
+    }
+
+    // Crear elementos flotantes
+    function createFloatingElements() {
+      const elements = ['💖', '✨', '🌟', '💫', '🦋'];
+      
+      setInterval(() => {
+        if (Math.random() > 0.7) {
+          const element = document.createElement('div');
+          element.className = 'floating-element';
+          element.textContent = elements[Math.floor(Math.random() * elements.length)];
+          element.style.left = Math.random() * 100 + 'vw';
+          element.style.top = '100vh';
+          document.body.appendChild(element);
+          
+          setTimeout(() => {
+            element.remove();
+          }, 4000);
+        }
+      }, 2000);
+    }
+
+    // Crear corazones flotantes
+    function createFloatingHearts(container) {
+      const hearts = ['💖', '💕', '💗', '💝', '💘'];
+      
+      for (let i = 0; i < 8; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.className = 'floating-element';
+          heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+          heart.style.position = 'absolute';
+          heart.style.left = Math.random() * container.offsetWidth + 'px';
+          heart.style.top = container.offsetHeight + 'px';
+          heart.style.fontSize = (Math.random() * 0.8 + 0.8) + 'rem';
+          container.style.position = 'relative';
+          container.appendChild(heart);
+          
+          setTimeout(() => {
+            heart.remove();
+          }, 4000);
+        }, i * 200);
+      }
+    }
+
+    // Crear efecto de brillo
+    function createSparkleEffect(container) {
+      const sparkles = ['✨', '⭐', '🌟', '💫'];
+      
+      for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+          const sparkle = document.createElement('div');
+          sparkle.className = 'sparkle-effect';
+          sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+          sparkle.style.left = Math.random() * container.offsetWidth + 'px';
+          sparkle.style.top = Math.random() * container.offsetHeight + 'px';
+          sparkle.style.position = 'absolute';
+          container.appendChild(sparkle);
+          
+          setTimeout(() => {
+            sparkle.remove();
+          }, 2000);
+        }, i * 100);
+      }
+    }
+
+    // Efecto de rastro del cursor
+    function createCursorTrail(e) {
+      if (Math.random() > 0.8) {
+        const trail = document.createElement('div');
+        trail.className = 'cursor-trail';
+        trail.style.left = e.clientX + 'px';
+        trail.style.top = e.clientY + 'px';
+        document.body.appendChild(trail);
+        
+        setTimeout(() => {
+          trail.remove();
+        }, 500);
+      }
+    }
+
+    // Animación de las tarjetas al hacer scroll
+    function animateOnScroll() {
+      const cards = document.querySelectorAll('.movie-card, .secret-item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      });
+
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px)';
+        card.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        observer.observe(card);
+      });
+    }
+
+    // Inicialización
+    window.addEventListener('load', () => {
+      createStars();
+      animateOnScroll();
+    });
+
+    // Event listeners
+    document.addEventListener('mousemove', createCursorTrail);
+
+    // Efecto de hover en las tarjetas de película
+    document.addEventListener('DOMContentLoaded', () => {
+      const movieCards = document.querySelectorAll('.movie-card');
+      movieCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          createSparkleEffect(card);
+        });
+      });
+    });
+
+    // Prevenir selección de texto en elementos decorativos
+    document.querySelectorAll('.floating-element, .sparkle-effect, .cursor-trail').forEach(el => {
+      el.style.userSelect = 'none';
+      el.style.pointerEvents = 'none';
+    });
+
+    // Efecto de parallax suave
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const parallaxElements = document.querySelectorAll('.movie-card');
+      
+      parallaxElements.forEach((element, index) => {
+        const speed = 0.5 + (index * 0.1);
+        element.style.transform = `translateY(${scrolled * speed * 0.1}px)`;
+      });
+    });
+
+    // Efecto de respiración en el botón hero
+    setInterval(() => {
+      const heroButton = document.querySelector('.hero-button');
+      if (heroButton && document.getElementById('hero').style.display !== 'none') {
+        heroButton.style.animation = 'pulse 2s ease-in-out';
+        setTimeout(() => {
+          heroButton.style.animation = '';
+        }, 2000);
+      }
+    }, 5000);
+
+    // Sonido de hover (simulado con vibración en móviles)
+    function addHoverFeedback() {
+      const interactiveElements = document.querySelectorAll('button, .movie-card');
+      
+      interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+          // Vibración en dispositivos móviles
+          if (navigator.vibrate) {
+            navigator.vibrate(50);
+          }
+        });
+      });
+    }
+
+    // Inicializar efectos adicionales
+    setTimeout(() => {
+      addHoverFeedback();
+    }, 1000);
+
+    // Efecto de writing machine para los textos
+    function typeWriterEffect(element, text, speed = 50) {
+      let i = 0;
+      element.innerHTML = '';
+      
+      function typeWriter() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+      
+      typeWriter();
+    }
+
+    // Activar efecto de máquina de escribir en secretos
+    function activateTypeWriter(secretId) {
+      const secret = document.getElementById(secretId);
+      const originalText = secret.textContent;
+      
+      if (secret.classList.contains('visible')) {
+        typeWriterEffect(secret, originalText, 30);
+      }
+    }
+
+    // Mejorar la función revealSecret
+    window.revealSecret = function(secretId) {
+      const secret = document.getElementById(secretId);
+      const button = secret.previousElementSibling;
+      const originalText = secret.textContent;
+      
+      if (secret.classList.contains("visible")) {
+        secret.classList.remove("visible");
+        button.textContent = button.textContent.replace("Ocultar ", "");
+      } else {
+        secret.classList.add("visible");
+        button.textContent = "Ocultar " + button.textContent.replace("💌 ", "💌 ");
+        
+        // Efectos especiales
+        setTimeout(() => {
+          createFloatingHearts(secret.parentElement);
+          createSparkleEffect(secret.parentElement);
+          typeWriterEffect(secret, originalText, 25);
+        }, 200);
+      }
+    };
+
+    // Easter egg: Konami Code
+    let konamiCode = [];
+    const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+    
+    document.addEventListener('keydown', (e) => {
+      konamiCode.push(e.keyCode);
+      if (konamiCode.length > konamiSequence.length) {
+        konamiCode.shift();
+      }
+      
+      if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+        // Efecto especial secreto
+        document.body.style.animation = 'rainbow 2s infinite';
+        
+        setTimeout(() => {
+          document.body.style.animation = '';
+          alert('💖 ¡Has encontrado el mensaje secreto! Eres increíble, tal como lo pensé desde el primer día. 💖');
+        }, 3000);
+      }
+    });
+
+    // Añadir animación rainbow al CSS
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes rainbow {
+        0% { filter: hue-rotate(0deg); }
+        25% { filter: hue-rotate(90deg); }
+        50% { filter: hue-rotate(180deg); }
+        75% { filter: hue-rotate(270deg); }
+        100% { filter: hue-rotate(360deg); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    console.log('💖 Hola curiosa! Si estás viendo esto es porque eres increíble. Esta página fue hecha con todo el cariño del mundo para ti. 💖');
+  </script>
+</body>
+</html>
